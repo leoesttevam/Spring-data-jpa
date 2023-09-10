@@ -1,19 +1,21 @@
 package br.com.alura.Spring.data;
 
+import java.util.Scanner;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import br.com.alura.Spring.data.orm.Cargo;
-import br.com.alura.Spring.data.repository.CargoRepository;
+import br.com.alura.Spring.data.service.CargoService;
 
 @SpringBootApplication
 public class SpringDataApplication implements CommandLineRunner {
 	
-	private final CargoRepository repository;
+	private final CargoService service;
 	
-	public SpringDataApplication(CargoRepository repository) {
-		this.repository = repository;
+	private Boolean system = true;
+	
+	public SpringDataApplication(CargoService service) {
+		this.service = service;
 	}
 	
 	public static void main(String[] args) {
@@ -23,10 +25,22 @@ public class SpringDataApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Cargo cargo = new Cargo();
-		cargo.setDescricao("GERENTE");
+		Scanner sc = new Scanner(System.in);
 		
-		repository.save(cargo);
+		while(system) {
+			System.out.println("Qual ação você deseja executar; ");
+			System.out.println("0 - Sair");
+			System.out.println("1 - Cargo");
+			
+			int action = sc.nextInt();
+			
+			if(action == 1) {
+				service.inicial(sc);
+			}else {
+				system = false;
+			}
+		}
+		
 	}
 
 }
