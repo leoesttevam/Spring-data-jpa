@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.alura.Spring.data.orm.Cargo;
@@ -53,7 +57,7 @@ public class FuncionarioService {
 				atualizar(sc);
 				break;
 			case 3:
-				visualizar();
+				visualizar(sc);
 				break;
 			case 4:
 				deletar(sc);
@@ -73,14 +77,22 @@ public class FuncionarioService {
 		System.out.println("Nome");
 		String nome = sc.next();
 		
+		sc.nextLine();
+		
 		System.out.println("CPF");
-		String cpf = sc.next();
+		String cpf = sc.nextLine();
+		
+		sc.nextLine();
 		
 		System.out.println("Salario");
 		BigDecimal salario = sc.nextBigDecimal();
 		
+		sc.nextLine();
+		
 		System.out.println("Data da contratação");
-		String data = sc.next();
+		String data = sc.nextLine();
+		
+		sc.nextLine();
 		
 		System.out.println("Id do cargo");
 		Integer id = sc.nextInt();
@@ -128,11 +140,15 @@ public class FuncionarioService {
 		System.out.println("Nome");
 		String nome = sc.next();
 		
+		sc.nextLine();
+		
 		System.out.println("CPF");
 		String cpf = sc.next();
 		
 		System.out.println("Salario");
 		BigDecimal salario = sc.nextBigDecimal();
+		
+		sc.nextLine();
 		
 		System.out.println("Data da contratação");
 		String data = sc.next();
@@ -156,8 +172,16 @@ public class FuncionarioService {
 		System.out.println("Atualizado");
 	}
 	
-	private void visualizar() {
-		Iterable<Funcionario> funcionario = repository.findAll();
+	private void visualizar(Scanner sc) {
+		System.out.println("Qual página deseja visualizar");
+		Integer page = sc.nextInt();
+		
+		Pageable pageable = PageRequest.of(page, 5, Sort.unsorted());
+		Page<Funcionario> funcionario = repository.findAll(pageable);
+		
+		System.out.println(funcionario);
+		System.out.println("pagina atual " + funcionario.getNumber());
+		System.out.println("Total elemento " + funcionario.getTotalElements());
 		
 		funcionario.forEach(func -> System.out.println(func));
 	}

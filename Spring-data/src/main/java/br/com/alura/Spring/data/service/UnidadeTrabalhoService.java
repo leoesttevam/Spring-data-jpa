@@ -55,8 +55,10 @@ public class UnidadeTrabalhoService {
 		System.out.println("Digite o nome da unidade de trabalho");
 		String descricao = sc.next();
 		
+		sc.nextLine();
+		
 		System.out.println("Digite o endereco");
-		String endereco = sc.next();
+		String endereco = sc.nextLine();
 		
 		UnidadeTrabalho unidade = new UnidadeTrabalho(descricao, endereco);
 		
@@ -71,6 +73,8 @@ public class UnidadeTrabalhoService {
 		
 		System.out.println("Digite o nome da unidade de trabalho");
 		String descricao = sc.next();
+		
+		sc.nextLine();
 		
 		System.out.println("Digite o endereco");
 		String endereco = sc.next();
