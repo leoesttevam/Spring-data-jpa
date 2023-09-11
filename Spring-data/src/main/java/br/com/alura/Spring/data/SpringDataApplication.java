@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.com.alura.Spring.data.service.CargoService;
 import br.com.alura.Spring.data.service.FuncionarioService;
+import br.com.alura.Spring.data.service.RelatorioFuncionarioDinamico;
 import br.com.alura.Spring.data.service.RelatorioService;
 import br.com.alura.Spring.data.service.UnidadeTrabalhoService;
 
@@ -17,15 +18,17 @@ public class SpringDataApplication implements CommandLineRunner {
 	private final FuncionarioService funcionarioService;
 	private final UnidadeTrabalhoService trabalhoService;
 	private final RelatorioService relatorioService;
+	private final RelatorioFuncionarioDinamico dinamico;
 	
 	private Boolean system = true;
 	
 	public SpringDataApplication(CargoService service, FuncionarioService funcionarioService, 
-			UnidadeTrabalhoService trabalhoService, RelatorioService relatorioService) {
+			UnidadeTrabalhoService trabalhoService, RelatorioService relatorioService, RelatorioFuncionarioDinamico dinamico) {
 		this.service = service;
 		this.funcionarioService = funcionarioService;
 		this.trabalhoService = trabalhoService;
 		this.relatorioService = relatorioService;
+		this.dinamico = dinamico;
 	}
 	
 	public static void main(String[] args) {
@@ -44,6 +47,7 @@ public class SpringDataApplication implements CommandLineRunner {
 			System.out.println("2 - Funcionario");
 			System.out.println("3 - Unidade Trabalho");
 			System.out.println("4 - Relatorios");
+			System.out.println("5 - Relatorio dinamico");
 			
 			int action = sc.nextInt();
 			
@@ -59,6 +63,9 @@ public class SpringDataApplication implements CommandLineRunner {
 				break;
 			case 4:
 				relatorioService.inicial(sc);
+				break;
+			case 5:
+				dinamico.inicial(sc);
 				break;
 			default:
 				break;
