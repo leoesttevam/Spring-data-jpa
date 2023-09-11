@@ -1,6 +1,6 @@
 package br.com.alura.Spring.data.orm;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class UnidadeTrabalho {
 	private String endereco;
 	
 	@ManyToMany(mappedBy = "unidade", fetch = FetchType.EAGER)
-	private List<Funcionario> funcionarios = new ArrayList<>();
+	private List<Funcionario> funcionarios = Arrays.asList();
 	
 	public UnidadeTrabalho() {
 		

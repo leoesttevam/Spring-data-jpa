@@ -176,7 +176,7 @@ public class FuncionarioService {
 		System.out.println("Qual página deseja visualizar");
 		Integer page = sc.nextInt();
 		
-		Pageable pageable = PageRequest.of(page, 5, Sort.unsorted());
+		Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.ASC, "nome"));
 		Page<Funcionario> funcionario = repository.findAll(pageable);
 		
 		System.out.println(funcionario);

@@ -1,5 +1,6 @@
 package br.com.alura.Spring.data.orm;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class Cargo {
 	private String descricao;
 	
 	@OneToMany(mappedBy = "cargo")
-	private List<Funcionario> funcionarios;
+	private List<Funcionario> funcionarios = Arrays.asList();
 	
 	public Cargo() {
 		

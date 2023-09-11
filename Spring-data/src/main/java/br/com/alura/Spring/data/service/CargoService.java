@@ -1,5 +1,6 @@
 package br.com.alura.Spring.data.service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
@@ -77,7 +78,7 @@ public class CargoService {
 	}
 	
 	private void visualizar() {
-		Iterable<Cargo> cargos = repository.findAll();
+		List<Cargo> cargos = repository.findAll();
 		
 		cargos.forEach(cargo -> System.out.println(cargo));
 	}

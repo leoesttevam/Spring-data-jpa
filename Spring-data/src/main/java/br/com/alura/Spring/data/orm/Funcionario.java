@@ -2,6 +2,7 @@ package br.com.alura.Spring.data.orm;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -41,7 +42,7 @@ public class Funcionario {
 	@JoinTable(name = "fk_funcionarios_unidades", joinColumns = {
 			@JoinColumn(name = "fk_funcionario") },
 	inverseJoinColumns = { @JoinColumn(name = "fk_unidade") })
-	private List<UnidadeTrabalho> unidade;
+	private List<UnidadeTrabalho> unidade = Arrays.asList();;
 	
 	public Funcionario() {
 		
