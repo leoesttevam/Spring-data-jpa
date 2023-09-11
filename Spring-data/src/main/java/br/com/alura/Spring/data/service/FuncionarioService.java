@@ -93,8 +93,9 @@ public class FuncionarioService {
 		funcionario.setSalario(salario);
 		funcionario.setDataContratacao(LocalDate.parse(data, formatter));
 		Optional<Cargo> cargo = cargoRepository.findById(id);
-		funcionario.setUnidade(unidades);
 		funcionario.setCargo(cargo.get());
+		funcionario.setUnidade(unidades);
+		
 		
 		repository.save(funcionario);
 		
@@ -148,8 +149,8 @@ public class FuncionarioService {
 		funcionario.setSalario(salario);
 		funcionario.setDataContratacao(LocalDate.parse(data, formatter));
 		Optional<Cargo> cargo = cargoRepository.findById(cargoId);
-		funcionario.setUnidade(unidades);
 		funcionario.setCargo(cargo.get());
+		funcionario.setUnidade(unidades);
 		
 		repository.save(funcionario);
 		System.out.println("Atualizado");

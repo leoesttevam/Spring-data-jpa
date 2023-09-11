@@ -16,6 +16,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name = "funcionarios")
 public class Funcionario {
@@ -33,9 +36,10 @@ public class Funcionario {
 	@JoinColumn(name = "cargo_id", nullable = false)
 	private Cargo cargo;
 	
+	@Fetch(FetchMode.SELECT)
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "fk_funcionarios_unidades", joinColumns = {
-			@JoinColumn(name = "fk_unidade") },
+			@JoinColumn(name = "fk_funcionario") },
 	inverseJoinColumns = { @JoinColumn(name = "fk_unidade") })
 	private List<UnidadeTrabalho> unidade;
 	
